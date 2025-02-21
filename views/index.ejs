@@ -10,7 +10,8 @@
 
 <body>
   <form action="/add" method="post">
-    <input type="text" name="country" autofocus autocomplete="off" placeholder="<%= locals.error ? error :  'Enter country name'%>">
+    <input type="text" name="country" autofocus autocomplete="off"
+      placeholder="<%= locals.error ? error :  'Enter country name'%>">
     <button type="submit">Add</button>
   </form>
 
@@ -21,8 +22,14 @@
     <script>
       const country_codes = "<%= countries %>".split(",")
       console.log(typeof ("<%= countries %>"))
+
       country_codes.forEach(code => {
-        document.getElementById(code).style.fill = 'teal'
+        try {
+          document.getElementById(code).style.fill = 'teal'
+        } catch (error) {
+          console.log(error)
+        }
+
       });
 
     </script>
